@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerHuman HRIS - Create Roles</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+    <div class="pt-[50px] md:px-[50px] flex justify-between items-center px-4">
+        <a href="/index.html">
+            <img src="../assets/images/logo-type.png" alt="">
+        </a>
+        <a href="#" onclick="history.back()">
+            <img src="../assets/svgs/ric-close-white.svg" alt="">
+        </a>
+    </div>
+    <section class="py-[70px] flex flex-col items-center justify-center px-4">
+        <div class="text-[32px] font-semibold text-dark">
+            New Role
+        </div>
+        <p class="mt-4 text-base leading-7 text-center mb-[50px] text-grey">
+            Manage your employees to achieve <br>
+            a bigger goals for your company
+        </p>
+        <form class="w-full card">
+            <div class="form-group">
+                <label for="" class="text-grey">Role Name</label>
+                <input type="text" class="input-field" value="Product Marketing">
+            </div>
+            <div class="form-group">
+                <label for="idRes" class="text-grey">Responsibility</label>
+                <ul id="listResp" class="flex flex-col gap-4">
+                    <li class="inline-flex items-center w-full gap-5">
+                        <input type="text" id="idRes" name="responsibility" class="w-full input-field">
+                        <a href="#" role="button" id="addRsp">
+                            <img src="../assets/svgs/ric-plus.svg" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a href="roles.html" class="w-full btn btn-primary mt-[14px]">
+                Save Role
+            </a>
+        </form>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#addRsp").click(function (e) {
+                var target = e.currentTarget.previousElementSibling
+                var dataValue = target.value
+
+                var newElement =
+                    `<li class='inline-flex items-center w-full gap-5'><input type='text' id='idRes' name='responsibility' class='w-full input-field' disabled value='${dataValue}'><a href='#' role='button' id='rmRsp'><img src='../assets/svgs/ric-close-red.svg' alt='PowerHuman'></a></li>`
+
+                target.value = ''
+                $("#listResp").prepend(newElement)
+            })
+        })
+
+        document.addEventListener('mousemove', function () {
+            $("#rmRsp").click(function (e) {
+                e.currentTarget.parentElement.remove()
+            })
+        })
+    </script>
+</body>
+
+</html>
